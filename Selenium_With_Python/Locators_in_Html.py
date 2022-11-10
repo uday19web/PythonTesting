@@ -2,6 +2,7 @@ from selenium import webdriver
 
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 service_obj = Service(r'D:\Python\Firefox_Driver\64\geckodriver')
 
@@ -33,6 +34,18 @@ But we can construct the Xpath, CSS Selector to identify the locator.
 #   #id using id, using dot by class name - .classname
 driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys('Uday')
 driver.find_element(By.CSS_SELECTOR, '#inlineRadio1').click()
+
+#######################################
+# Static Drop down
+''' if you see the select tag in Html that one is "static dropdown" - we need use "Select Class" 
+to handle it. 3 Ways we can handle the static dropdown menu
+1. select by visible text, 2. select by index, 3.select by value - value added in the html'''
+dropdown = Select(driver.find_element(By.ID, "exampleFormControlSelect1"))
+dropdown.select_by_visible_text("Female")
+dropdown.select_by_index(0)
+# dropdown.select_by_value()
+
+####################################
 
 # difference between Css Selector and Xpath is double slash "//" and "@"
 '''
